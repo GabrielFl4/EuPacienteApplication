@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EEF5FF"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    tools:context=".MenuActivity">
+
+    <Button
+        android:id="@+id/Menu_Button_Receitas"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginVertical="12dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#3B82F6"
+        android:maxWidth="360dp"
+        android:minWidth="0dp"
+        android:onClick="verReceitas"
+        android:text="Receitas"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Menu_Button_Consultas" />
+
+    <Button
+        android:id="@+id/Menu_Button_Ficha"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginVertical="12dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#3B82F6"
+        android:maxWidth="360dp"
+        android:minWidth="0dp"
+        android:onClick="verFicha"
+        android:text="Ficha Médica"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Menu_Button_Receitas" />
+
+    <Button
+        android:id="@+id/Main_Button_Financeiro"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginVertical="12dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#3B82F6"
+        android:maxWidth="360dp"
+        android:minWidth="0dp"
+        android:onClick="financeiro"
+        android:text="Financeiro"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Menu_Button_Ficha" />
+
+    <Button
+        android:id="@+id/main_Button_Financeiro"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="148dp"
+        android:backgroundTint="#1D4ED8"
+        android:maxWidth="360dp"
+        android:minWidth="0dp"
+        android:onClick="sair"
+        android:text="Sair"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Main_Button_Financeiro" />
+
+    <TextView
+        android:id="@+id/Menu_TextView_BemVindo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="Bem vindo, João!"
+        android:textSize="36sp"
+        android:textColor="#1E3A8A"
+        android:gravity="center"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="18sp"
+        app:autoSizeMaxTextSize="36sp"
+        app:autoSizeStepGranularity="2sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Como podemos te ajudar hoje?"
+        android:textSize="16sp"
+        android:textColor="#475569"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Menu_TextView_BemVindo" />
+
+    <Button
+        android:id="@+id/Menu_Button_Consultas"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="252dp"
+        android:backgroundTint="#3B82F6"
+        android:maxWidth="360dp"
+        android:minWidth="0dp"
+        android:onClick="verConsultas"
+        android:text="Consultas"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
