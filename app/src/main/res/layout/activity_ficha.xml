@@ -8,7 +8,7 @@
     tools:context=".FichaActivity">
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/Login_TextView_SubTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="108dp"
