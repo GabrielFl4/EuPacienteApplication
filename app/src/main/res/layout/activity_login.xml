@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
+    tools:context=".activities.LoginActivity"
     android:background="@drawable/background">
 
     <TextView
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
-        android:text="Usuário"
+        android:text="Email"
         android:textColor="#ffffff"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_corner"
         android:ems="10"
-        android:hint="insira o usuário"
+        android:hint="Insira um email"
         android:inputType="text"
         android:padding="18dp"
         android:textColor="#FFFFFF"
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="69dp"
         android:background="@drawable/rounded_corner_button"
-        android:onClick="login"
+        android:onClick="postLogin"
         android:paddingTop="14dp"
         android:paddingBottom="14dp"
         android:text="Entrar"
