@@ -1,14 +1,19 @@
-package com.example.eupacienteapplication;
+package com.example.eupacienteapplication.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.eupacienteapplication.Permanencia;
+import com.example.eupacienteapplication.R;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -22,8 +27,16 @@ public class MenuActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        // Método para buscar nome de usuário e exibir no TV
+        SharedPreferences prefs = getSharedPreferences(Permanencia.arquivo, MODE_PRIVATE);
+        String nome_usuario = prefs.getString(Permanencia.usuario_nome, "");
 
-        // todo: Método para buscar nome de usuário e exibir no TV
+
+        nome_usuario = (nome_usuario.split(" ")[0]);
+        TextView tituloTV = findViewById(R.id.Menu_TextView_BemVindo);
+        String concatenada = "Bem vindo, " + nome_usuario;
+        tituloTV.setText(concatenada);
+
     }
 
     public void verConsultas(View v){
@@ -47,6 +60,8 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void sair(View v){
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
         finish();
         // todo: Adicionar método para deslogar usuário
     }

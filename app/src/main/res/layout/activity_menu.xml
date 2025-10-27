@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:paddingStart="20dp"
     android:paddingEnd="20dp"
-    tools:context=".MenuActivity"
+    tools:context=".activities.MenuActivity"
     android:background="@drawable/background">
 
     <Button
@@ -107,7 +107,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/Menu_TextView_Subtitulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
