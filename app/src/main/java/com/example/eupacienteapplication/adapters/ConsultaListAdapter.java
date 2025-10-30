@@ -84,7 +84,7 @@ public class ConsultaListAdapter extends android.widget.BaseAdapter {
 
         // Cor do chip de status
         int cor = 0xFF777777; // default
-        if ("CONFIRMADA'".equalsIgnoreCase(st))      cor = 0xFF2E7D32; // verde
+        if ("CONFIRMADA".equalsIgnoreCase(st))      cor = 0xFF2E7D32; // verde
         else if ("PENDENTE".equalsIgnoreCase(st)) cor = 0xFFEF6C00; // laranja
         else if ("CANCELADA".equalsIgnoreCase(st)) cor = 0xFFC62828; // vermelho
         tvStatus.setBackgroundColor(cor);
