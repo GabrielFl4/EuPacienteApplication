@@ -100,7 +100,7 @@ public class ConsultasActivity extends AppCompatActivity {
         String ip = prefs.getString(Permanencia.ip, "");
 
 
-        String url = "http://" + ip + ":8080/api/consultas";
+        String url = "http://" + ip + ":8080/api/consultas/" + usuarioId;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
 
@@ -165,7 +165,7 @@ public class ConsultasActivity extends AppCompatActivity {
     }
 
     //Função da internet que formata o horário para algo mais legível ao usuário
-    private String formatarIsoEmPtBr(String iso) {
+    /*private String formatarIsoEmPtBr(String iso) {
         // Aceita "yyyy-MM-ddTHH:mm:ss" ou "yyyy-MM-ddTHH:mm"
         if (iso == null || iso.length() < 16) return iso;
 
@@ -176,7 +176,7 @@ public class ConsultasActivity extends AppCompatActivity {
         String mi   = iso.substring(14, 16);
 
         return dd + "/" + mm + "/" + yyyy + " " + hh + ":" + mi;
-    }
+    }*/
 
     private void atualizarStatusParaPendente(Long consultaId) throws Exception{
         SharedPreferences prefs = getSharedPreferences(Permanencia.arquivo, MODE_PRIVATE);
