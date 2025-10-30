@@ -55,7 +55,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void financeiro(View v){
-        Intent i = new Intent(this, FichaActivity.class);
+        Intent i = new Intent(this, FinanceiroActivity.class);
         startActivity(i);
     }
 

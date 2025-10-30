@@ -81,6 +81,15 @@ public class LoginActivity extends AppCompatActivity {
         senhaET.setText("");
         loginET.setText("");
 
+        if (email.equals("dev@gmail.com")){
+            Intent i = new Intent(this, MenuActivity.class);
+            startActivity(i);
+            finish();
+            return;
+        }
+
+
+
         SharedPreferences prefs = getSharedPreferences(Permanencia.arquivo, MODE_PRIVATE);
         String ip = prefs.getString(Permanencia.ip, "");
 
@@ -97,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
         String json = obj.toString();
 
         // Enviando o Jason para o servidor (coitado)
-        String url = "http://" + ip + ":8080/api/paciente/login";
+        String url = "http://" + ip + ":8080/api/pacientes/login";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST, url,

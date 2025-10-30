@@ -20,9 +20,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/listView"
-        android:layout_width="373dp"
-        android:layout_height="355dp"
+        android:id="@+id/Consultar_ListView_Consultas"
+        android:layout_width="367dp"
+        android:layout_height="428dp"
         android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -30,41 +30,41 @@
         app:layout_constraintTop_toBottomOf="@+id/Consultar_TextView_Titulo" />
 
     <Button
-        android:id="@+id/Consultar_Button_Desmarcar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
-        android:onClick="desmarcar"
-        android:text="Desmarcar"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.077"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listView" />
-
-    <Button
         android:id="@+id/Consultar_Button_Agendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="24dp"
         android:onClick="verAgendar"
         android:text="Agendar"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.929"
+        app:layout_constraintHorizontal_bias="0.922"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listView" />
+        app:layout_constraintTop_toBottomOf="@+id/Consultar_ListView_Consultas" />
+
+    <Button
+        android:id="@+id/Consultar_Button_Desmarcar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:onClick="desmarcar"
+        android:text="Desmarcar"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Consultar_ListView_Consultas" />
 
     <Button
         android:id="@+id/Consultar_Button_Voltar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="76dp"
         android:onClick="voltar"
         android:text="Voltar"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listView" />
+        app:layout_constraintTop_toBottomOf="@+id/Consultar_ListView_Consultas" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
