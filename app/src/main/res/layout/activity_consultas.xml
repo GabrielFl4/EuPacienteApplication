@@ -1,70 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ConsultasActivity">
+    tools:context=".activities.ConsultasActivity"
+    android:background="#104E8B"> <TextView
+    android:id="@+id/Consultar_TextView_Titulo"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="36dp"
+    android:text="Consultas Marcadas"
+    android:textSize="34sp"
+    android:textColor="#FFFFFF"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/Consultar_TextView_Titulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Consultas Marcadas"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ListView
-        android:id="@+id/Consultar_ListView_Consultas"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_consultas"
         android:layout_width="367dp"
         android:layout_height="428dp"
         android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="#286BA8" app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Consultar_TextView_Titulo" />
+        app:layout_constraintTop_toBottomOf="@+id/Consultar_TextView_Titulo">
+
+        <ListView
+            android:id="@+id/Consultar_ListView_Consultas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="8dp"/> </androidx.cardview.widget.CardView>
+
 
     <Button
         android:id="@+id/Consultar_Button_Agendar"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:onClick="verAgendar"
         android:text="Agendar"
         android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/rounded_corner_button"
+        app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.922"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Consultar_ListView_Consultas" />
+        app:layout_constraintStart_toEndOf="@id/Consultar_Button_Desmarcar"
+        app:layout_constraintTop_toBottomOf="@+id/card_consultas" />
 
     <Button
         android:id="@+id/Consultar_Button_Desmarcar"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:onClick="desmarcar"
         android:text="Desmarcar"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.064"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/rounded_corner_button"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toStartOf="@id/Consultar_Button_Agendar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Consultar_ListView_Consultas" />
+        app:layout_constraintTop_toBottomOf="@+id/card_consultas" />
 
     <Button
         android:id="@+id/Consultar_Button_Voltar"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="16dp"
         android:onClick="voltar"
         android:text="Voltar"
         android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/rounded_corner_button"
+        app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Consultar_ListView_Consultas" />
+        app:layout_constraintTop_toBottomOf="@+id/Consultar_Button_Agendar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

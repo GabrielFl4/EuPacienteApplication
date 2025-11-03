@@ -6,198 +6,233 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.AgendarActivity">
+    tools:context=".activities.AgendarActivity"
+    android:background="#104E8B">
 
-    <!-- Título -->
     <TextView
         android:id="@+id/Agendar_TextView_Angendamento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Agendamento"
-        android:textSize="34sp"
+        android:textSize="36sp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:layout_marginTop="32dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintVertical_bias="0.0"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Label Data (mantido seu id) -->
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
         android:text="Data"
+        android:textColor="#C0C0C0"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/Agendar_TextView_Angendamento"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="24dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/Agendar_TextView_Angendamento" />
 
-    <!-- Campo Data (mantido seu id para facilitar no código) -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_data"
-        android:layout_width="0dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_data"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="#286BA8"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp">
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Agendamento_EditText_Data"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusable="true"
-            android:clickable="true"
-            android:inputType="none"
-            android:hint="dd/mm/aaaa"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            app:boxBackgroundMode="none">
 
-    <!-- Label Horários (mantido seu id 'textView7' mas texto atualizado) -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Agendamento_EditText_Data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent" android:hint="dd/mm/aaaa"
+                android:inputType="none"
+                android:padding="18dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#B0B0B0" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.cardview.widget.CardView>
+
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Horários"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/til_data"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
-        android:layout_marginStart="24dp"/>
+        android:text="Horários"
+        android:textColor="#C0C0C0"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_data" /> <androidx.cardview.widget.CardView
+    android:id="@+id/card_hora"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="#286BA8"
+    app:layout_constraintTop_toBottomOf="@+id/textView7"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent">
 
-    <!-- ChipGroup de horários (SUBSTITUI o EditText de hora) -->
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/Agendamento_ChipGroup_Hora"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:singleSelection="true"
-        app:singleLine="false"
         app:chipSpacingHorizontal="8dp"
         app:chipSpacingVertical="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp" />
+        android:padding="8dp"/>
+</androidx.cardview.widget.CardView>
 
-    <!-- Label Especialidade (mantido seu id) -->
+
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Especialidade"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/Agendamento_ChipGroup_Hora"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="24dp"/>
+        android:textColor="#C0C0C0"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/card_hora"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_especialidade"
-        android:layout_width="0dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_especialidade"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="#286BA8"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp">
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <AutoCompleteTextView
-            android:id="@+id/Agendamento_AutoComplete_Especialidade"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_especialidade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="none"
-            android:hint="Selecione a especialidade"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            app:boxBackgroundMode="none">
 
-    <!-- Label Sintomas (mantido seu id) -->
+            <AutoCompleteTextView
+                android:id="@+id/Agendamento_AutoComplete_Especialidade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent" android:padding="18dp"
+                android:hint="Selecione a especialidade"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#B0B0B0"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.cardview.widget.CardView>
+
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="O que você está sentindo?"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/til_especialidade"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="24dp"/>
+        android:textColor="#C0C0C0"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/card_especialidade"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-    <!-- Sintomas (mantido seu id, configurado multiline) -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_sintomas"
-        android:layout_width="0dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_sintomas"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="#286BA8"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="8dp">
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Agendamento_PlainText_Sintomas"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_sintomas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Insira seus sintomas (Opcional)"
-            android:inputType="textMultiLine"
-            android:minLines="3"
-            android:maxLines="5"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            app:boxBackgroundMode="none">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Agendamento_PlainText_Sintomas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="Insira seus sintomas (Opcional)"
+                android:inputType="textMultiLine"
+                android:maxLines="5"
+                android:minLines="3"
+                android:padding="18dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#B0B0B0"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.cardview.widget.CardView>
 
-    <!-- Label Rotina (mantido seu id) -->
+
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         android:text="Consulta de rotina?"
+        android:textColor="#C0C0C0"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/til_sintomas"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="24dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/card_sintomas" />
 
-    <!-- Switch de rotina (SUBSTITUI os 2 CheckBox) -->
     <com.google.android.material.materialswitch.MaterialSwitch
         android:id="@+id/Agendamento_Switch_Rotina"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sim"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#FFFFFF"
         android:layout_marginTop="8dp"
-        android:layout_marginStart="24dp"/>
+        android:layout_marginStart="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-    <!-- Botão Cancelar (mantido onClick que você já tinha) -->
     <Button
         android:id="@+id/Agendar_Button_Cancelar"
-        android:layout_width="0dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:text="Cancelar"
-        android:onClick="cancelar"
-        app:layout_constraintTop_toBottomOf="@+id/Agendamento_Switch_Rotina"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/Agendar_Button_Enviar"
-        app:layout_constraintHorizontal_weight="@integer/material_motion_duration_short_1"
-        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="32dp"/>
+        android:background="@drawable/rounded_corner_button"
+        android:onClick="cancelar"
+        android:text="Cancelar"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toStartOf="@id/Agendar_Button_Enviar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Agendamento_Switch_Rotina" />
 
-    <!-- Botão Marcar -->
     <Button
         android:id="@+id/Agendar_Button_Enviar"
-        android:layout_width="0dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:text="Marcar Consulta"
-        app:layout_constraintTop_toBottomOf="@+id/Agendamento_Switch_Rotina"
-        app:layout_constraintStart_toEndOf="@id/Agendar_Button_Cancelar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_weight="@integer/material_motion_duration_short_1"
-        android:layout_marginEnd="24dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"/>
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_corner_button"
+        android:text="Marcar Consulta"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/Agendar_Button_Cancelar"
+        app:layout_constraintTop_toBottomOf="@+id/Agendamento_Switch_Rotina" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
