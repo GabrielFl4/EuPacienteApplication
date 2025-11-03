@@ -90,9 +90,6 @@ public class ConsultasActivity extends AppCompatActivity {
         finish();
     }
 
-
-
-
     private void carregarConsultasDoUsuario() {
         //Pega o ID do usuário no sharedPref
         SharedPreferences prefs = getSharedPreferences(Permanencia.arquivo, MODE_PRIVATE);
