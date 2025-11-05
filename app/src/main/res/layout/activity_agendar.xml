@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -8,196 +7,156 @@
     android:layout_height="match_parent"
     tools:context=".activities.AgendarActivity">
 
-    <!-- Título -->
     <TextView
-        android:id="@+id/Agendar_TextView_Angendamento"
+        android:id="@+id/Agendar_TextView_Titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Agendamento"
+        android:text="Nova Consulta"
         android:textSize="34sp"
+        android:layout_marginTop="16dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintVertical_bias="0.0"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Label Data (mantido seu id) -->
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Data"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/Agendar_TextView_Angendamento"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="24dp"/>
-
-    <!-- Campo Data (mantido seu id para facilitar no código) -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_data"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/Agendar_Scroll"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/Agendar_TextView_Titulo"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp">
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Agendamento_EditText_Data"
+        <LinearLayout
+            android:id="@+id/Agendar_Content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusable="true"
-            android:clickable="true"
-            android:inputType="none"
-            android:hint="dd/mm/aaaa"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:orientation="vertical"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="24dp"
+            android:gravity="center_horizontal">
 
-    <!-- Label Horários (mantido seu id 'textView7' mas texto atualizado) -->
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Horários"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/til_data"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="24dp"/>
+            <!-- Data -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Agendar_TextInputLayout_Data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Data"
+                android:layout_marginTop="8dp">
 
-    <!-- ChipGroup de horários (SUBSTITUI o EditText de hora) -->
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/Agendamento_ChipGroup_Hora"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:singleSelection="true"
-        app:singleLine="false"
-        app:chipSpacingHorizontal="8dp"
-        app:chipSpacingVertical="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Agendar_TextInputEditText_Data"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:inputType="none"
+                    android:onClick="abrirDatePicker"
+                    tools:text="02/11/2025" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Label Especialidade (mantido seu id) -->
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Especialidade"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/Agendamento_ChipGroup_Hora"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="24dp"/>
+            <!-- Hora (dropdown de horários) -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Agendar_TextInputLayout_Hora"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Horário"
+                android:layout_marginTop="8dp"
+                app:endIconMode="dropdown_menu">
 
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/Agendar_AutoComplete_Hora"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    tools:text="14:15" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_especialidade"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp">
+            <!-- Médico -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Agendar_TextInputLayout_Medico"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Médico (especialidade - nome)"
+                android:layout_marginTop="12dp"
+                app:endIconMode="dropdown_menu">
 
-        <AutoCompleteTextView
-            android:id="@+id/Agendamento_AutoComplete_Especialidade"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="none"
-            android:hint="Selecione a especialidade"/>
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/Agendar_AutoComplete_Medico"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:completionHint="Selecione Especialidade"
+                    android:inputType="none"
+                    tools:text="Cardiologia - Dra. Ana Silva" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Label Sintomas (mantido seu id) -->
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="O que você está sentindo?"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/til_especialidade"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="24dp"/>
+            <!-- Rotina -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Agendar_TextInputLayout_Rotina"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tipo de rotina"
+                android:layout_marginTop="8dp"
+                app:endIconMode="dropdown_menu">
 
-    <!-- Sintomas (mantido seu id, configurado multiline) -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_sintomas"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="8dp">
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/Agendar_AutoComplete_Rotina"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    tools:text="Consulta inicial" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Agendamento_PlainText_Sintomas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Insira seus sintomas (Opcional)"
-            android:inputType="textMultiLine"
-            android:minLines="3"
-            android:maxLines="5"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            <!-- Sintomas -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Agendar_TextInputLayout_Sintomas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Sintomas (até 200 caracteres)"
+                android:layout_marginTop="12dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="200">
 
-    <!-- Label Rotina (mantido seu id) -->
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Consulta de rotina?"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/til_sintomas"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="24dp"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Agendar_TextInputEditText_Sintomas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|start"
+                    android:inputType="textMultiLine"
+                    android:maxLength="200"
+                    android:minLines="3"
+                    tools:text="Descreva resumidamente o que você sente" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Switch de rotina (SUBSTITUI os 2 CheckBox) -->
-    <com.google.android.material.materialswitch.MaterialSwitch
-        android:id="@+id/Agendamento_Switch_Rotina"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sim"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="24dp"/>
+            <!-- Informações ao usuário -->
+            <TextView
+                android:id="@+id/Agendar_TextView_Infos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="12sp"
+                android:lineSpacingExtra="2dp"
+                android:text="• Ao agendar, a consulta entra como PENDENTE e aguarda confirmação da secretária.\n• Você pode cancelar a qualquer momento enquanto estiver pendente.\n• O valor previsto será indicado automaticamente na consulta assim que ela for marcada como PENDENTE." />
 
-    <!-- Botão Cancelar (mantido onClick que você já tinha) -->
-    <Button
-        android:id="@+id/Agendar_Button_Cancelar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Cancelar"
-        android:onClick="cancelar"
-        app:layout_constraintTop_toBottomOf="@+id/Agendamento_Switch_Rotina"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/Agendar_Button_Enviar"
-        app:layout_constraintHorizontal_weight="@integer/material_motion_duration_short_1"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="32dp"/>
+            <!-- Botão -->
+            <Button
+                android:id="@+id/Agendar_Button_Salvar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:onClick="enviarConsulta"
+                android:text="Agendar consulta" />
 
-    <!-- Botão Marcar -->
-    <Button
-        android:id="@+id/Agendar_Button_Enviar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Marcar Consulta"
-        app:layout_constraintTop_toBottomOf="@+id/Agendamento_Switch_Rotina"
-        app:layout_constraintStart_toEndOf="@id/Agendar_Button_Cancelar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_weight="@integer/material_motion_duration_short_1"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"/>
+            <Space
+                android:layout_width="1dp"
+                android:layout_height="12dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
