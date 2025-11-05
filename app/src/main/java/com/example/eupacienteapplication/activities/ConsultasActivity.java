@@ -68,6 +68,7 @@ public class ConsultasActivity extends AppCompatActivity {
     public void verAgendar(View v){
         Intent i = new Intent(this, AgendarActivity.class);
         startActivity(i);
+        finish();
     }
 
     public void desmarcar(View v) throws Exception {
@@ -118,7 +119,7 @@ public class ConsultasActivity extends AppCompatActivity {
         listaConsultas.clear();
 
         for (int i = 0; i < json.length(); i++) {
-            org.json.JSONObject o = json.optJSONObject(i);
+            JSONObject o = json.optJSONObject(i);
             if (o == null) continue;
 
             Long id = o.has("id") ? o.optLong("id") : null;
@@ -131,9 +132,9 @@ public class ConsultasActivity extends AppCompatActivity {
             boolean consultaPaga = o.optBoolean("consultaPaga", false);
 
             // valor
-            java.math.BigDecimal valor;
+            BigDecimal valor;
             String valorStr = o.optString("valor", "0");
-            try { valor = new java.math.BigDecimal(valorStr); } catch (Exception e) { valor = java.math.BigDecimal.ZERO; }
+            try { valor = new BigDecimal(valorStr); } catch (Exception e) { valor = java.math.BigDecimal.ZERO; }
 
             // cria a consulta
             Consulta c = new Consulta(id, consultaPaga, valor, sintomas, null);

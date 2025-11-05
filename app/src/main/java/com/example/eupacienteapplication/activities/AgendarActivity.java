@@ -1,6 +1,7 @@
 package com.example.eupacienteapplication.activities;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -16,16 +17,20 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.eupacienteapplication.Permanencia;
 import com.example.eupacienteapplication.R;
+import com.example.eupacienteapplication.entities.Medico;
 import com.example.eupacienteapplication.util.Calendario;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
@@ -34,6 +39,8 @@ public class AgendarActivity extends AppCompatActivity {
 
     private TextInputEditText etData;
     private MaterialAutoCompleteTextView acHora;
+
+    private ArrayList<Medico> listaMedicos = new ArrayList<>();
 
     // Zona do Timezone e estado
     private final TimeZone ZONE = Calendario.tzBr();
@@ -59,6 +66,8 @@ public class AgendarActivity extends AppCompatActivity {
                 return insets;
             });
         }
+        // GET de médicos
+        puxarMedicos();
 
         MaterialAutoCompleteTextView mactvRotina = findViewById(R.id.Agendar_AutoComplete_Rotina);
         etData = findViewById(R.id.Agendar_TextInputEditText_Data);
@@ -74,7 +83,6 @@ public class AgendarActivity extends AppCompatActivity {
         ArrayAdapter<String> adapterRotina = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, opcoes);
         mactvRotina.setAdapter(adapterRotina);
         mactvRotina.setText("", false);
-
     }
 
     public void enviarConsulta(View v) throws Exception {
@@ -87,15 +95,12 @@ public class AgendarActivity extends AppCompatActivity {
         TextInputEditText tietSintomas = findViewById(R.id.Agendar_TextInputEditText_Sintomas);
         MaterialAutoCompleteTextView mactvMedico = findViewById(R.id.Agendar_AutoComplete_Medico);
 
-
         // Verifica data e Hora
         String dataHoraIso = obterDataHoraIsoSelecionada();
         if (dataHoraIso == null || dataHoraIso.isBlank()){
             Toast.makeText(this, "Selecione data e horário", Toast.LENGTH_SHORT).show();
             return;
         }
-
-
 
         String rotina = (mactvRotina != null && mactvRotina.getText() != null) ? mactvRotina.getText().toString().trim() : "";
             String saida;
@@ -118,18 +123,24 @@ public class AgendarActivity extends AppCompatActivity {
         String sintomas = (tietSintomas != null && tietSintomas.getText() != null) ? tietSintomas.getText().toString().trim() : "";
         if (sintomas.isBlank()) {
             Toast.makeText(this, "Descreva algum sintomas.", Toast.LENGTH_SHORT).show();
+            return;
         }
 
+
+        Long id_medico = obterIdMedicoSelecionado(mactvMedico);
+        if (id_medico == null){
+            Toast.makeText(this, "Selecione uma especialidade", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         String url = "http://" + ip + ":8080/api/consultas/";
         JSONObject body = new JSONObject();
         // Corpo da consulta que tenho que enviar.
-        body.put("dataHoraIso", dataHoraIso);
-        body.put("rotina", rotina);
+        body.put("dataHora", dataHoraIso);
+        body.put("statusMotivo", rotina);
         body.put("sintomas", sintomas);
-        body.put("status", "PENDENTE");
         body.put("id_paciente", id_paciente);
-        // body.put("id_medico", id_medico);
+        body.put("id_medico", id_medico);
 
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -142,7 +153,18 @@ public class AgendarActivity extends AppCompatActivity {
                     finalizar();
                     },
                 error -> {
-                    Toast.makeText(this, "Erro ao cadastrar consulta", Toast.LENGTH_SHORT).show();
+                    int code = (error.networkResponse != null) ? error.networkResponse.statusCode : -1;
+
+                    String msg;
+                    if (code == 409) {
+                        msg = "Já existe uma consulta nesse horário com esse médico.";
+                    } else if (code > 0) {
+                        msg = "Falha ao agendar (HTTP " + code + ").";
+                    } else {
+                        msg = "Falha de rede ao agendar.";
+                    }
+
+                    Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
                 }
                 );
             requestQueue.add(req);
@@ -159,11 +181,91 @@ public class AgendarActivity extends AppCompatActivity {
         actvRotina.setText("");
         tietSintomas.setText("");
 
+        Intent i = new Intent(this, ConsultasActivity.class);
+        startActivity(i);
+
         finish();
     }
 
+    private void puxarMedicos(){
+        SharedPreferences prefs = getSharedPreferences(Permanencia.arquivo, MODE_PRIVATE);
+        String ip = prefs.getString(Permanencia.ip, "");
 
+        String url = "http://" + ip + ":8080/api/medicos";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
 
+        JsonArrayRequest req = new JsonArrayRequest(
+                Request.Method.GET,
+                url,
+                null,
+                response -> preencherListaMedicos(response),
+                error -> {
+                    Toast.makeText(this, "Erro de conexão", Toast.LENGTH_SHORT).show();
+                }
+        );
+        requestQueue.add(req);
+    }
+
+    private void preencherListaMedicos(JSONArray json){
+        MaterialAutoCompleteTextView mactvMedico = findViewById(R.id.Agendar_AutoComplete_Medico);
+        listaMedicos.clear();
+
+        for (int i = 0; i < json.length(); i++) {
+            JSONObject obj = json.optJSONObject(i);
+            if (obj == null) continue;
+
+            Long id = obj.has("id") ? obj.optLong("id") : null;
+
+            String nome = obj.optString("nome", null);
+
+            String especialidade = obj.optString("especialidade", null);
+
+            Medico med = new Medico(id, nome, especialidade);
+            listaMedicos.add(med);
+        }
+
+        // Preenche o adapter de médicos
+        ArrayList<String> titulos = gerarStringMedicos();
+        ArrayAdapter<String> adapterMedicos = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, titulos);
+        mactvMedico.setAdapter(adapterMedicos);
+        mactvMedico.setText("", null);
+        mactvMedico.setEnabled(!titulos.isEmpty());
+    }
+
+    private ArrayList<String> gerarStringMedicos(){
+        ArrayList<String> titulos = new ArrayList<>();
+        if (listaMedicos == null) return titulos;
+
+        for (Medico m : listaMedicos) {
+            if (m == null) continue;
+            titulos.add(montarTituloMedico(m));
+        }
+        return titulos;
+    }
+
+    // Função usada pela acima para montar o titulo do médico específico da lista.
+    // Fiz separado para usar novamente em outra função
+    private String montarTituloMedico(Medico m){
+        String esp  = m.getEspecialidade() != null ? m.getEspecialidade().trim() : "";
+        String nome = m.getNome() != null ? m.getNome().trim() : "";
+        if (!esp.isEmpty() && !nome.isEmpty()) return (esp + " - " + nome).trim();
+        if (!esp.isEmpty())                    return esp;
+        return nome;
+    }
+
+    private Long obterIdMedicoSelecionado(MaterialAutoCompleteTextView mactvMedico){
+        String selecionado = (mactvMedico.getText() != null) ? mactvMedico.getText().toString().trim() : "";
+        if (selecionado.isEmpty() || listaMedicos == null) return null;
+
+        // Percorre todos os titulos de todos os médicos para achar qual o correspondente no objeto
+        for (Medico m : listaMedicos) {
+            if (m == null) continue;
+            if (montarTituloMedico(m).equals(selecionado)) {
+                return m.getId();
+            }
+        }
+        return null; // se não encontrar
+    }
 
     public void abrirDatePicker(View v) {
         Calendar today = Calendario.startOfToday(ZONE);
