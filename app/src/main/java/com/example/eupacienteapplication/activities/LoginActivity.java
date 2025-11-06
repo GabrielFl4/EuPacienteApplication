@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -35,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -42,6 +44,16 @@ public class LoginActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        // TODO: MUDAR ISSO!
+        // Reseta as shared prefs de forma bem porca
+        SharedPreferences prefs = getSharedPreferences(Permanencia.arquivo, MODE_PRIVATE);
+        prefs.edit()
+                .putString(Permanencia.ip, "")
+                .putString(Permanencia.usuario_id, "")
+                .putString(Permanencia.usuario_nome, null)
+                .commit();
+
         // TODO -> Método que estou utilizando para pegar o IP do hotspot artomaticarmente minha genti.
         tentarIp();
     }
@@ -55,6 +67,10 @@ public class LoginActivity extends AppCompatActivity {
                     .commit();
         } else {
             Toast.makeText(this, "ERRO | Não foi possível detectar o IP", Toast.LENGTH_LONG).show();
+            SharedPreferences prefs = getSharedPreferences(Permanencia.arquivo, MODE_PRIVATE);
+            prefs.edit()
+                    .putString(Permanencia.ip, "100.112.68.121")
+                    .commit();
         }
     }
 
@@ -81,12 +97,26 @@ public class LoginActivity extends AppCompatActivity {
         senhaET.setText("");
         loginET.setText("");
 
-        if (email.equals("dev@gmail.com")){
+        if (email.equals("dev@bypass.com")){
             Intent i = new Intent(this, MenuActivity.class);
             startActivity(i);
             finish();
             return;
         }
+
+        /*if (email.equalsIgnoreCase("dev@dev.com")) {
+            SharedPreferences prefs = getSharedPreferences(Permanencia.arquivo, MODE_PRIVATE);
+            prefs.edit()
+                    .putString(Permanencia.ip, "100.112.68.121")
+                    .commit();
+            prefs.edit()
+                    .putString("usuario_nome", "DevTeste")
+                    .putString("usuario_id", "1")
+                    .apply();
+            Intent i = new Intent(this, MenuActivity.class);
+            startActivity(i);
+            finish();
+        }*/
 
 
 
