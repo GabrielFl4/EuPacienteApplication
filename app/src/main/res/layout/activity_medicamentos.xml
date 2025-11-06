@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/rc_blue_bg"
+    tools:context=".activities.MedicamentosActivity">
+
+    <!-- Card que contém o cabeçalho (médico/especialidade + data) e a lista -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/Medic_ListCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="12dp"
+        app:cardBackgroundColor="@color/rc_card_bg"
+        app:cardElevation="1dp"
+        app:layout_constraintBottom_toTopOf="@id/Medic_BtnVoltar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Large"
+        app:strokeColor="@color/rc_blue_container"
+        app:strokeWidth="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Medic_Content"
+            android:layout_width="match_parent"
+            android:layout_height="601dp"
+            android:padding="16dp">
+
+            <!-- “Dr. Nome - Especialidade” -->
+            <TextView
+                android:id="@+id/Medic_TextView_Titulo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:breakStrategy="balanced"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:hyphenationFrequency="normal"
+                android:maxLines="2"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Dr. Augusto Lusko — Filósofo" />
+
+            <!-- Data da receita -->
+            <TextView
+                android:id="@+id/Medic_TextView_Data"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Medic_TextView_Titulo"
+                tools:text="| 01/11/2025 |" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/Medic_Divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                app:dividerColor="?attr/colorOutlineVariant"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Medic_TextView_Data" />
+
+            <!-- Área rolável da lista -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/Medic_RecyclerView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:clipToPadding="false"
+                android:paddingStart="8dp"
+                android:paddingTop="6dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="6dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Medic_Divider"
+                tools:listitem="@layout/item_medicamento" />
+
+            <!-- Mensagem quando não há medicamentos -->
+            <TextView
+                android:id="@+id/Medic_Empty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nenhum medicamento nesta receita"
+                android:textSize="16sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/Medic_RecyclerView"
+                app:layout_constraintEnd_toEndOf="@id/Medic_RecyclerView"
+                app:layout_constraintStart_toStartOf="@id/Medic_RecyclerView"
+                app:layout_constraintTop_toTopOf="@id/Medic_RecyclerView" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Botão Voltar (padrão do resto do app) -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/Medic_BtnVoltar"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="voltar"
+        android:text="Voltar"
+        android:textAllCaps="false"
+        android:textColor="@color/rc_blue_primary"
+        app:backgroundTint="@color/rc_blue_container"
+        app:cornerRadius="28dp"
+        app:icon="@drawable/ic_arrow_back_24"
+        app:iconGravity="textStart"
+        app:iconPadding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ItemReceita_Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    app:cardUseCompatPadding="false"
+    app:cardElevation="0.5dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="?attr/colorOutline"
+    app:cardBackgroundColor="?attr/colorSurface"
+    app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <!-- Cabeçalho -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ItemReceita_Header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="64dp">
+
+            <!-- Badge de data -->
+            <LinearLayout
+                android:id="@+id/ItemReceita_BadgeData"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_date_badge"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                    android:id="@+id/ItemReceita_Dia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    tools:text="07" />
+
+                <TextView
+                    android:id="@+id/ItemReceita_Mes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="@android:color/white"
+                    tools:text="JAN" />
+            </LinearLayout>
+
+            <!-- Título + Status -->
+            <LinearLayout
+                android:id="@+id/ItemReceita_Textos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="12dp"
+                android:paddingEnd="8dp"
+                app:layout_constraintStart_toEndOf="@id/ItemReceita_BadgeData"
+                app:layout_constraintEnd_toStartOf="@id/ItemReceita_Caret"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                    android:id="@+id/ItemReceita_Titulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    tools:text="Sábado — Clínico Geral" />
+
+                <TextView
+                    android:id="@+id/ItemReceita_Status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    tools:text="Emitida" />
+            </LinearLayout>
+
+            <!-- Caret -->
+            <ImageView
+                android:id="@+id/ItemReceita_Caret"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:padding="2dp"
+                android:rotation="0"
+                android:src="@drawable/ic_expand_more_24"
+                app:tint="?attr/colorOnSurfaceVariant"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Linha divisória -->
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:visibility="gone"
+            app:dividerColor="?attr/colorOutlineVariant"
+            android:id="@+id/ItemReceita_Divider"
+            tools:visibility="visible"/>
+
+        <!-- Ações (expandido) -->
+        <LinearLayout
+            android:id="@+id/ItemReceita_Actions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:weightSum="2"
+            tools:visibility="visible">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/ItemReceita_BtnDownload"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Download"
+                android:textAllCaps="false"
+                app:strokeColor="@color/rc_blue_primary"
+                android:textColor="@color/rc_blue_primary"/>
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="0dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/ItemReceita_BtnVisualizar"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Visualizar"
+                android:textAllCaps="false"
+                app:backgroundTint="@color/rc_blue_container"
+                android:textColor="@color/rc_blue_primary"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
