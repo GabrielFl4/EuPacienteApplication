@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ConsultasActivity">
+    tools:context=".activities.ConsultasActivity"
+    android:background="@color/azul_fundo">
 
     <TextView
         android:id="@+id/Consultar_TextView_Titulo"
@@ -14,6 +15,7 @@
         android:layout_marginTop="36dp"
         android:text="Consultas Marcadas"
         android:textSize="34sp"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,12 +33,14 @@
 
     <Button
         android:id="@+id/Consultar_Button_Agendar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
         android:layout_marginTop="24dp"
         android:onClick="verAgendar"
         android:text="Agendar"
-        android:textSize="20sp"
+        android:textSize="22sp"
+        android:background="@drawable/rounded_corner_button"
+        app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.922"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,12 +48,14 @@
 
     <Button
         android:id="@+id/Consultar_Button_Desmarcar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
         android:layout_marginTop="24dp"
         android:onClick="desmarcar"
         android:text="Desmarcar"
-        android:textSize="20sp"
+        android:textSize="22sp"
+        android:background="@drawable/rounded_corner_button"
+        app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,14 +63,16 @@
 
     <Button
         android:id="@+id/Consultar_Button_Voltar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/rounded_corner_button"
         android:onClick="voltar"
         android:text="Voltar"
-        android:textSize="20sp"
+        android:textSize="22sp"
+        app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Consultar_ListView_Consultas" />
+        app:layout_constraintTop_toBottomOf="@+id/Consultar_Button_Desmarcar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

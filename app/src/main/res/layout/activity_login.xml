@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.LoginActivity"
-    android:background="@drawable/background">
+    android:background="@color/azul_fundo">
 
     <TextView
         android:id="@+id/Login_TextView_Titulo"
@@ -15,7 +15,7 @@
         android:layout_marginTop="32dp"
         android:text="Eu Paciente"
         android:textColor="#ffffff"
-        android:textSize="48sp"
+        android:textSize="70sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,14 +26,13 @@
         android:id="@+id/Login_TextView_Usuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
         android:text="Email"
         android:textColor="#ffffff"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintHorizontal_bias="0.074"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Login_TextView_SubTitulo" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/Login_EditText_Usuario"
@@ -119,17 +118,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Login_EditText_Usuario" />
 
-    <TextView
-        android:id="@+id/Login_TextView_SubTitulo"
-        android:layout_width="289dp"
-        android:layout_height="82dp"
-        android:gravity="center"
-        android:text="Seu perfil médico
-        agora unificado"
-        android:textSize="28sp"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="361dp"
+        android:layout_height="252dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Login_TextView_Titulo"
-        android:textColor="#ffffff" />
+        app:srcCompat="@drawable/logobranca" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
