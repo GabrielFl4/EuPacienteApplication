@@ -10,6 +10,9 @@ public class Medico {
     public Medico() {
     }
 
+    public Medico(String nome, String especialidade) {
+    }
+
     public String getNome() {
         return nome;
     }

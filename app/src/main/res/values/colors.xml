@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="rc_blue_bg">#E9F2FF</color>
+    <color name="rc_blue_primary">#1976D2</color>
+    <color name="rc_blue_container">#D6E7FF</color>
+    <color name="rc_card_bg">#b7bdc7</color>
 </resources>

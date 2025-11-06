@@ -162,20 +162,6 @@ public class ConsultasActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    //Função da internet que formata o horário para algo mais legível ao usuário
-    /*private String formatarIsoEmPtBr(String iso) {
-        // Aceita "yyyy-MM-ddTHH:mm:ss" ou "yyyy-MM-ddTHH:mm"
-        if (iso == null || iso.length() < 16) return iso;
-
-        String yyyy = iso.substring(0, 4);
-        String mm   = iso.substring(5, 7);
-        String dd   = iso.substring(8, 10);
-        String hh   = iso.substring(11, 13);
-        String mi   = iso.substring(14, 16);
-
-        return dd + "/" + mm + "/" + yyyy + " " + hh + ":" + mi;
-    }*/
-
     private void atualizarStatusParaPendente(Long consultaId) throws Exception{
         SharedPreferences prefs = getSharedPreferences(Permanencia.arquivo, MODE_PRIVATE);
         String ip = prefs.getString(Permanencia.ip, "");
