@@ -23,10 +23,11 @@ public class MenuActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_menu);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            Insets status = insets.getInsets(WindowInsetsCompat.Type.statusBars());
+            v.setPadding(status.left, status.top, status.right, 0);
             return insets;
         });
+
         // Método para buscar nome de usuário e exibir no TV
         SharedPreferences prefs = getSharedPreferences(Permanencia.arquivo, MODE_PRIVATE);
         String nome_usuario = prefs.getString(Permanencia.usuario_nome, "");

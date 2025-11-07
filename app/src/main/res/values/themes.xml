@@ -11,13 +11,12 @@
         <item name="android:navigationBarColor">@color/rc_blue_bg</item>
     </style>
 
-    <!-- Tema do Login (herda o mesmo fundo) -->
     <style name="Theme.EuPaciente.Login" parent="Theme.EuPacienteApplication" />
 
-    <!-- Tema do Splash com fundo pronto (opcional, mas recomendado) -->
     <style name="Theme.EuPaciente.Splash" parent="Theme.Material3.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/bg_splash_window</item>
+        <item name="android:windowBackground">@drawable/bg_splash_window</item>>
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@color/rc_blue_bg</item>
+        <item name="android:navigationBarColor">@color/azul_fundo</item>
     </style>
+
 </resources>

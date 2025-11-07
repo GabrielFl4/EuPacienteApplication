@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="14dp">
+    android:padding="14dp"
+    android:background="@drawable/rounded_corner_button">
 
     <!-- Linha 1: Especialidade (esq) e Data (dir) -->
     <LinearLayout
@@ -19,7 +20,8 @@
             android:layout_weight="1"
             android:text="Cardiologia"
             android:textStyle="bold"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/ItemConsulta_TextView_Data"
@@ -27,7 +29,8 @@
             android:layout_height="wrap_content"
             android:text="29/02/2025 09:00"
             android:textStyle="bold"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textColor="@color/white"/>
     </LinearLayout>
 
     <!-- Linha 2: Médico (esq) e Status (dir, chip) -->
@@ -43,7 +46,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Dr. Jefferson R."
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/ItemConsulta_TextView_Status"
@@ -66,7 +70,8 @@
         android:layout_height="wrap_content"
         android:text="Sintomas: ... "
         android:textSize="14sp"
-        android:layout_marginTop="6dp"/>
+        android:layout_marginTop="6dp"
+        android:textColor="@color/white"/>
 
     <!-- divisória -->
     <View

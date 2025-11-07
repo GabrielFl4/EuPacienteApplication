@@ -8,7 +8,7 @@
     android:paddingStart="20dp"
     android:paddingEnd="20dp"
     tools:context=".activities.MenuActivity"
-    android:background="@drawable/background">
+    android:background="@color/azul_fundo">
 
     <Button
         android:id="@+id/Menu_Button_Receitas"

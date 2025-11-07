@@ -25,8 +25,9 @@ public class SplashActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets s = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(s.left, s.top, s.right, s.bottom);
+            Insets status = insets.getInsets(WindowInsetsCompat.Type.statusBars());
+            // mantém o topo; zera o bottom pra não empurrar conteúdo
+            v.setPadding(status.left, status.top, status.right, 0);
             return insets;
         });
 
