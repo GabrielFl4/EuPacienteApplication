@@ -14,7 +14,6 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.eupacienteapplication.R;
-import com.example.eupacienteapplication.activities.MedicamentosActivity;
 import com.example.eupacienteapplication.entities.Medico;
 import com.example.eupacienteapplication.entities.Receita;
 import com.google.android.material.button.MaterialButton;

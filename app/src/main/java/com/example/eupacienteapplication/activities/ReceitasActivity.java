@@ -23,7 +23,6 @@ import com.example.eupacienteapplication.adapters.ReceitasAdapter;
 import com.example.eupacienteapplication.entities.Medicamento;
 import com.example.eupacienteapplication.entities.Medico;
 import com.example.eupacienteapplication.entities.Receita;
-import com.google.android.material.button.MaterialButton;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
