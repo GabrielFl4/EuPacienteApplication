@@ -15,7 +15,7 @@
         android:layout_marginTop="32dp"
         android:text="Eu Paciente"
         android:textColor="#ffffff"
-        android:textSize="70sp"
+        android:textSize="55sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
 
     <EditText
         android:id="@+id/Login_EditText_Usuario"
-        android:layout_width="350dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_corner"
@@ -47,15 +47,15 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Login_TextView_Usuario" />
 
     <Button
         android:id="@+id/Login_Button_Entrar"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
         android:layout_marginTop="69dp"
         android:background="@drawable/rounded_corner_button"
         android:onClick="postLogin"
@@ -67,42 +67,42 @@
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Login_TextInputLayout_Senha"
-        app:layout_constraintVertical_bias="0.012" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Login_TextInputLayout_Senha"
-        android:layout_width="350dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/Login_TextView_Senha"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.437"
-        app:layout_constraintVertical_bias="0.032"
-
         app:boxBackgroundMode="none"
         app:endIconMode="password_toggle"
         app:endIconTint="#FFFFFF"
+        app:hintEnabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
 
-    app:hintEnabled="false">
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Login_TextView_Senha"
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/Login_EditText_Senha"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_corner"
-        android:padding="18dp"
+        app:layout_constraintVertical_bias="0.026">
 
-        android:hint="Insira sua senha"
-        android:textColorHint="#FFFFFF"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Login_EditText_Senha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:hint="Insira sua senha"
 
-        android:inputType="textPassword"
-        android:textColor="#FFFFFF"
-        android:importantForAutofill="noExcludeDescendants"/>
+            android:importantForAutofill="noExcludeDescendants"
+            android:inputType="textPassword"
+
+            android:padding="18dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -121,7 +121,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="361dp"
-        android:layout_height="252dp"
+        android:layout_height="180dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Login_TextView_Titulo"
