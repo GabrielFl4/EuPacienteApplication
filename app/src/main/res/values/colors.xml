@@ -5,5 +5,9 @@
     <color name="rc_blue_bg">#E9F2FF</color>
     <color name="rc_blue_primary">#1976D2</color>
     <color name="rc_blue_container">#D6E7FF</color>
-    <color name="rc_card_bg">#b7bdc7</color>
+    <color name="rc_card_bg">#E5E7EB</color>   <!-- cinza do card principal (um pouco mais escuro) -->
+    <color name="rc_card_bg_dark">#D6DBE4</color>  <!-- cinza do card principal, um tom mais escuro -->
+    <color name="rc_divider">#BDBDBD</color>
+    <color name="rc_update_container">#E6F6EE</color>   <!-- tonal verde leve -->
+    <color name="rc_update_primary">#1E7D4F</color>    <!-- texto/ícone do botão Atualizar -->
 </resources>
