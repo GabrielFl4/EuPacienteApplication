@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        /*if (email.equalsIgnoreCase("dev@dev.com")) {
+        if (email.equalsIgnoreCase("dev@dev.com")) {
             SharedPreferences prefs = getSharedPreferences(Permanencia.arquivo, MODE_PRIVATE);
             prefs.edit()
                     .putString(Permanencia.ip, "100.112.68.121")
@@ -116,8 +116,7 @@ public class LoginActivity extends AppCompatActivity {
             Intent i = new Intent(this, MenuActivity.class);
             startActivity(i);
             finish();
-        }*/
-
+        }
 
 
         SharedPreferences prefs = getSharedPreferences(Permanencia.arquivo, MODE_PRIVATE);

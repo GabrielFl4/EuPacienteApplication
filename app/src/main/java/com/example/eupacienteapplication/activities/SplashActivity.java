@@ -3,7 +3,6 @@ package com.example.eupacienteapplication.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.view.View;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
@@ -17,6 +16,8 @@ import com.example.eupacienteapplication.R;
 public class SplashActivity extends AppCompatActivity {
 
     private ImageView logo;
+    private boolean navegou = false;
+    private Runnable animAndGo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,29 +30,43 @@ public class SplashActivity extends AppCompatActivity {
             return insets;
         });
 
-        // pega a logo
         logo = findViewById(R.id.Splash_Logo);
 
-        // pequena espera + animação (logo sobe) → vai pro login
-        // (mantive simples, sem libs)
-        final long delay = 0;      // 0.2s antes de animar (sensação de “apareceu”)
-        final long dur   = 800;      // 0.5s de animação
+        final long delay = 800;
+        final long dur   = 800;
 
-        logo.postDelayed(() -> {
-            float dy = -dp(300); // sobe ~120dp; ajuste se quiser mais alto
+        animAndGo = () -> {
+            float dy = -dp(240);
             logo.animate()
                     .translationY(dy)
                     .setDuration(dur)
-                    .withEndAction(() -> {
-                        startActivity(new Intent(SplashActivity.this, LoginActivity.class));
-                        finish();
-                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                    })
+                    .withEndAction(this::goLoginOnce)
                     .start();
-        }, delay);
+        };
+
+        logo.postDelayed(animAndGo, delay);
     }
 
-    // helper simples pra dp → px
+    private void goLoginOnce() {
+        if (navegou) return;
+        navegou = true;
+        Intent i = new Intent(this, LoginActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
+        overridePendingTransition(0, 0);
+        finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (logo != null && animAndGo != null) {
+            logo.removeCallbacks(animAndGo);
+            logo.animate().cancel();
+        }
+    }
+
     private float dp(int value) {
         DisplayMetrics dm = getResources().getDisplayMetrics();
         return value * dm.density;
