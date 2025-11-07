@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.AgendarActivity">
+    tools:context=".activities.AgendarActivity"
+    android:background="@color/azul_fundo">
 
     <TextView
         android:id="@+id/Agendar_TextView_Titulo"
@@ -13,6 +14,7 @@
         android:layout_height="wrap_content"
         android:text="Nova Consulta"
         android:textSize="34sp"
+        android:textColor="@color/white"
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,16 +46,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Data"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:textColorHint="@color/white"
+                android:background="@drawable/rounded_corner_consulta_fundo"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/Agendar_TextInputEditText_Data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_corner_consulta_fundo"
                     android:clickable="true"
                     android:focusable="false"
                     android:inputType="none"
                     android:onClick="abrirDatePicker"
+                    android:textColor="@color/white"
+                    android:visibility="visible"
                     tools:text="02/11/2025" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,14 +73,18 @@
                 android:layout_height="wrap_content"
                 android:hint="Horário"
                 android:layout_marginTop="8dp"
-                app:endIconMode="dropdown_menu">
+                app:endIconMode="dropdown_menu"
+                android:textColorHint="@color/white"
+                android:background="@drawable/rounded_corner_consulta_fundo">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/Agendar_AutoComplete_Hora"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"
-                    tools:text="14:15" />
+                    tools:text="14:15"
+                    android:textColor="@color/white"
+                    android:background="@drawable/rounded_corner_consulta_fundo"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Médico -->
@@ -83,7 +95,9 @@
                 android:layout_height="wrap_content"
                 android:hint="Médico (especialidade - nome)"
                 android:layout_marginTop="12dp"
-                app:endIconMode="dropdown_menu">
+                app:endIconMode="dropdown_menu"
+                android:background="@drawable/rounded_corner_consulta_fundo"
+                android:textColorHint="@color/white">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/Agendar_AutoComplete_Medico"
@@ -91,7 +105,9 @@
                     android:layout_height="wrap_content"
                     android:completionHint="Selecione Especialidade"
                     android:inputType="none"
-                    tools:text="Cardiologia - Dra. Ana Silva" />
+                    tools:text="Cardiologia - Dra. Ana Silva"
+                    android:textColor="@color/white"
+                    android:background="@drawable/rounded_corner_consulta_fundo"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Rotina -->
@@ -102,14 +118,18 @@
                 android:layout_height="wrap_content"
                 android:hint="Tipo de rotina"
                 android:layout_marginTop="8dp"
-                app:endIconMode="dropdown_menu">
+                app:endIconMode="dropdown_menu"
+                android:textColorHint="@color/white"
+                android:background="@drawable/rounded_corner_consulta_fundo">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/Agendar_AutoComplete_Rotina"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"
-                    tools:text="Consulta inicial" />
+                    tools:text="Consulta inicial"
+                    android:textColor="@color/white"
+                    android:background="@drawable/rounded_corner_consulta_fundo"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Sintomas -->
@@ -120,7 +140,9 @@
                 android:hint="Sintomas (até 200 caracteres)"
                 android:layout_marginTop="12dp"
                 app:counterEnabled="true"
-                app:counterMaxLength="200">
+                app:counterMaxLength="200"
+                android:textColorHint="@color/white"
+                android:background="@drawable/rounded_corner_consulta_fundo">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/Agendar_TextInputEditText_Sintomas"
@@ -130,7 +152,9 @@
                     android:inputType="textMultiLine"
                     android:maxLength="200"
                     android:minLines="3"
-                    tools:text="Descreva resumidamente o que você sente" />
+                    tools:text="Descreva resumidamente o que você sente"
+                    android:textColor="@color/white"
+                    android:background="@drawable/rounded_corner_consulta_fundo"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Informações ao usuário -->
@@ -141,7 +165,8 @@
                 android:layout_marginTop="8dp"
                 android:textSize="12sp"
                 android:lineSpacingExtra="2dp"
-                android:text="• Ao agendar, a consulta entra como PENDENTE e aguarda confirmação da secretária.\n• Você pode cancelar a qualquer momento enquanto estiver pendente.\n• O valor previsto será indicado automaticamente na consulta assim que ela for marcada como PENDENTE." />
+                android:text="• Ao agendar, a consulta entra como PENDENTE e aguarda confirmação da secretária.\n• Você pode cancelar a qualquer momento enquanto estiver pendente.\n• O valor previsto será indicado automaticamente na consulta assim que ela for marcada como PENDENTE."
+                android:textColor="@color/white"/>
 
             <!-- Botão -->
             <Button
@@ -150,7 +175,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:onClick="enviarConsulta"
-                android:text="Agendar consulta" />
+                android:text="Agendar consulta"
+                android:background="@drawable/rounded_corner_button"
+                app:backgroundTint="@null"/>
 
             <Space
                 android:layout_width="1dp"
