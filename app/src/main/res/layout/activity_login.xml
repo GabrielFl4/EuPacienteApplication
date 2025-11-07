@@ -22,6 +22,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.012" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="362dp"
+        android:layout_height="178dp"
+        android:scaleType="center"
+        android:scaleX="2.5"
+        android:scaleY="2.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Login_TextView_Titulo"
+        app:srcCompat="@mipmap/ic_launcher_foreground" />
+
     <TextView
         android:id="@+id/Login_TextView_Usuario"
         android:layout_width="wrap_content"
@@ -51,60 +63,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Login_TextView_Usuario" />
 
-    <Button
-        android:id="@+id/Login_Button_Entrar"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="330dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="69dp"
-        android:background="@drawable/rounded_corner_button"
-        android:onClick="postLogin"
-        android:paddingTop="14dp"
-        android:paddingBottom="14dp"
-        android:text="Entrar"
-        android:textColor="#ffffff"
-        android:textSize="18sp"
-        app:backgroundTint="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Login_TextInputLayout_Senha"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Login_TextInputLayout_Senha"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:boxBackgroundMode="none"
-        app:endIconMode="password_toggle"
-        app:endIconTint="#FFFFFF"
-        app:hintEnabled="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Login_TextView_Senha"
-
-        app:layout_constraintVertical_bias="0.026">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Login_EditText_Senha"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corner"
-            android:hint="Insira sua senha"
-
-            android:importantForAutofill="noExcludeDescendants"
-            android:inputType="textPassword"
-
-            android:padding="18dp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF" />
-    </com.google.android.material.textfield.TextInputLayout>
-
     <TextView
         android:id="@+id/Login_TextView_Senha"
         android:layout_width="wrap_content"
@@ -118,13 +76,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Login_EditText_Usuario" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="361dp"
-        android:layout_height="180dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Login_TextInputLayout_Senha"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:boxBackgroundMode="none"
+        app:endIconMode="password_toggle"
+        app:endIconTint="#FFFFFF"
+        app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Login_TextView_Titulo"
-        app:srcCompat="@drawable/logobranca" />
+        app:layout_constraintTop_toBottomOf="@+id/Login_TextView_Senha">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Login_EditText_Senha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:hint="Insira sua senha"
+            android:importantForAutofill="noExcludeDescendants"
+            android:inputType="textPassword"
+            android:padding="18dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/Login_Button_Entrar"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="69dp"
+        android:background="@drawable/rounded_corner_button"
+        android:onClick="postLogin"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:text="Entrar"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:maxLines="1"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Login_TextInputLayout_Senha" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
