@@ -45,6 +45,9 @@
             android:name=".activities.AgendarActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.FinanceiroActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.LoginActivity"
             android:exported="false"
             android:launchMode="singleTop"
