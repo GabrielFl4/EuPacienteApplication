@@ -1,10 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/rc_blue_bg"
     tools:context=".activities.FinanceiroActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Título centralizado -->
+    <TextView
+        android:id="@+id/Financeiro_TextView_Titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Financeiro"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Card que contém a lista -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/Financeiro_ListCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        app:cardBackgroundColor="@color/rc_list_bg_dark"
+        app:strokeColor="@color/rc_blue_container"
+        app:strokeWidth="1dp"
+        app:cardElevation="1dp"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Large"
+        app:layout_constraintTop_toBottomOf="@id/Financeiro_TextView_Subtitulo"
+        app:layout_constraintBottom_toTopOf="@id/Financeiro_BtnVoltar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/Financeiro_SwipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/Financeiro_RecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:overScrollMode="always"
+            android:padding="12dp"
+            tools:listitem="@layout/item_consulta_financeiro"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</com.google.android.material.card.MaterialCardView>
+
+    <!-- Subtítulo alinhado à esquerda do card (coladinho) e acima da lista -->
+    <TextView
+        android:id="@+id/Financeiro_TextView_Subtitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Lista de Consultas"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/Financeiro_ListCard"
+        app:layout_constraintStart_toStartOf="@id/Financeiro_ListCard"
+        app:layout_constraintTop_toBottomOf="@id/Financeiro_TextView_Titulo" />
+
+    <!-- Empty state (sem ícone) -->
+<TextView
+android:id="@+id/Financeiro_Empty"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Nenhuma consulta confirmada"
+android:textSize="16sp"
+android:visibility="gone"
+app:layout_constraintTop_toTopOf="@id/Financeiro_ListCard"
+app:layout_constraintBottom_toBottomOf="@id/Financeiro_ListCard"
+app:layout_constraintStart_toStartOf="@id/Financeiro_ListCard"
+app:layout_constraintEnd_toEndOf="@id/Financeiro_ListCard" />
+
+    <!-- Botão Voltar (mantém seta + texto) -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/Financeiro_BtnVoltar"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="voltar"
+        android:text="Voltar"
+        android:textAllCaps="false"
+        android:textColor="@color/rc_blue_primary"
+        app:backgroundTint="@color/rc_blue_container"
+        app:cornerRadius="28dp"
+        app:icon="@drawable/ic_arrow_back_24"
+        app:iconGravity="textStart"
+        app:iconPadding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>

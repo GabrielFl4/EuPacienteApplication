@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Financeiro_Item_Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp"
+    app:cardElevation="0.5dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="?attr/colorOutline"
+    app:cardBackgroundColor="?attr/colorSurface"
+    app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <!-- Header (igual antes) -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Financeiro_Item_Header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="64dp"
+            android:background="?attr/selectableItemBackground"
+            android:paddingEnd="4dp">
+
+            <!-- Badge data -->
+            <LinearLayout
+                android:id="@+id/Financeiro_Item_BadgeData"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_date_badge"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                    android:id="@+id/Financeiro_Item_Dia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    tools:text="17" />
+
+                <TextView
+                    android:id="@+id/Financeiro_Item_Mes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="@android:color/white"
+                    tools:text="NOV" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Financeiro_Item_Textos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="12dp"
+                android:paddingEnd="8dp"
+                app:layout_constraintStart_toEndOf="@id/Financeiro_Item_BadgeData"
+                app:layout_constraintEnd_toStartOf="@id/Financeiro_Item_Right"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                    android:id="@+id/Financeiro_Item_Especialidade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    tools:text="Neurologista" />
+
+                <TextView
+                    android:id="@+id/Financeiro_Item_DiaSemana"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sábado"
+                    android:textSize="12sp"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/Financeiro_Item_Valor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="R$ 350,00" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Financeiro_Item_Right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end|center_vertical"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end|center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/Financeiro_Item_Horario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:text="14:00 - 14:45" />
+
+                    <ImageView
+                        android:id="@+id/Financeiro_Item_Caret"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:padding="2dp"
+                        android:rotation="0"
+                        android:src="@drawable/ic_expand_more_24"
+                        app:tint="?attr/colorOnSurfaceVariant" />
+                </LinearLayout>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/Financeiro_Item_ChipStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginTop="6dp"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:checkable="false"
+                    android:clickable="false"
+                    app:chipCornerRadius="12dp"
+                    app:chipBackgroundColor="@color/consulta_financeiro_paga"
+                    tools:text="PAGA" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/Financeiro_Item_Divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:visibility="gone"
+            app:dividerColor="?attr/colorOutlineVariant"
+            tools:visibility="visible"/>
+
+        <!-- Área expandida -->
+        <LinearLayout
+            android:id="@+id/Financeiro_Item_Actions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <!-- LARGURA MÍNIMA (wrap_content) e sem ícone -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/Financeiro_Item_BtnPagar"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:layout_gravity="center_horizontal"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="Realizar Pagamento"
+                android:textAllCaps="false"
+                app:backgroundTint="@color/rc_blue_container"
+                android:textColor="@color/rc_blue_primary"
+                app:cornerRadius="22dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
