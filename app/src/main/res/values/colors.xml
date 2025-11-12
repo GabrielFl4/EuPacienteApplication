@@ -15,4 +15,12 @@
     <color name="rc_list_bg_dark">#D5DAE2</color>  <!-- cinza mais escuro para o card da lista -->
     <color name="consulta_financeiro_paga">#93e6a9</color>
     <color name="consulta_financeiro_aberto">#f5d14c</color>
+
+    <color name="ep_black">#0B1118</color>       <!-- fundo das barras -->
+    <color name="ep_bg">#0B1118</color>          <!-- fundo das telas -->
+    <color name="ep_card">#141C24</color>
+    <color name="ep_text">#F5F7FA</color>
+
+    <color name="ep_primary">#2B6CB0</color>     <!-- azul do app -->
+    <color name="ep_on_primary">#FFFFFF</color>
 </resources>
