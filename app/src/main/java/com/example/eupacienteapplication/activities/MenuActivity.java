@@ -60,6 +60,11 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void sincronizar(View v){
+        Intent i = new Intent(this, SincroniaActivity.class);
+        startActivity(i);
+    }
+
     public void sair(View v){
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);

@@ -36,6 +36,8 @@ dependencies {
     implementation(libs.appcompat)
     implementation("com.android.volley:volley:1.2.1")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.squareup.okhttp3:okhttp-sse:4.12.0")
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
